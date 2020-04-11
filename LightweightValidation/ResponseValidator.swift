@@ -25,18 +25,21 @@ public struct Response {
 }
 
 extension Response {
-    public func validate(sentIds: Set<Int>) -> Bool {
+    public typealias SimpleValidationResult = V<()>
+
+    public func validate(sentIds: Set<Int>) -> SimpleValidationResult {
         validateCorrelationId(sentIds)
             && validateUserName()
     }
 
     /// The correlation id must be in the list of correlation ids of sent requests.
-    private func validateCorrelationId(_ sentIds: Set<Int>) -> Bool {
-        sentIds.contains(correlationId)
+    private func validateCorrelationId(_ sentIds: Set<Int>) -> SimpleValidationResult {
+        sentIds.contains(correlationId).V
     }
 
     /// Usernames are minimum 3 chars long and cannot include `@`.
-    private func validateUserName() -> Bool {
-        userName.count >= 3 && !userName.contains("@")
+    private func validateUserName() -> SimpleValidationResult {
+        (userName.count >= 3).V
+            && (!userName.contains("@")).V
     }
 }

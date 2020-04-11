@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		14BE424E2441BD8800636D18 /* ResponseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE424D2441BD8800636D18 /* ResponseValidator.swift */; };
 		7500D2F18796472EB6193460 /* ResponseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */; };
+		751856E71195D54F38792660 /* V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5B579658152CC9DDDFF0A /* V.swift */; };
 		75574FBB78CBA82FC5E0BB82 /* LightweightValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEB8C53725A66A98CCA17F /* LightweightValidation.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		14BE424D2441BD8800636D18 /* ResponseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidator.swift; sourceTree = "<group>"; };
 		7516E37763624BA4003C45E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		75736CAE96A19A4E9D97AD0F /* LightweightValidationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightweightValidationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75A5B579658152CC9DDDFF0A /* V.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V.swift; sourceTree = "<group>"; };
 		75ACF14D556F65F52C437423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		75AEB8C53725A66A98CCA17F /* LightweightValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LightweightValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidatorTests.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			children = (
 				75ACF14D556F65F52C437423 /* Info.plist */,
 				14BE424D2441BD8800636D18 /* ResponseValidator.swift */,
+				75A5B579658152CC9DDDFF0A /* V.swift */,
 			);
 			path = LightweightValidation;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14BE424E2441BD8800636D18 /* ResponseValidator.swift in Sources */,
+				751856E71195D54F38792660 /* V.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

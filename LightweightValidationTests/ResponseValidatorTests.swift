@@ -16,27 +16,27 @@ class ResponseValidatorTests: XCTestCase {
 
     func testCorrelationIdInSentIdsShouldBeValid() {
         let sut = response(withCorrelationId: 100)
-        XCTAssertTrue(sut.validate(sentIds: [1, 100, 9000]))
+        XCTAssertTrue(sut.validate(sentIds: [1, 100, 9000]).isValue)
     }
 
     func testCorrelationIdNotInSentIdsShouldBeInvalid() {
         let sut = response(withCorrelationId: 99)
-        XCTAssertFalse(sut.validate(sentIds: [1, 10]))
+        XCTAssertTrue(sut.validate(sentIds: [1, 10]).isError)
     }
 
     func testLongUserNameShouldBeValid() {
         let sut = response(withUserName: "123")
-        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]))
+        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]).isValue)
     }
 
     func testShortUserNameShouldBeInvalid() {
         let sut = response(withUserName: "ab")
-        XCTAssertFalse(sut.validate(sentIds: [T.anonymousCorrelationId]))
+        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]).isError)
     }
 
     func testUserNameWithAtSymbolShouldBeInvalid() {
         let sut = response(withUserName: "ab@foo")
-        XCTAssertFalse(sut.validate(sentIds: [T.anonymousCorrelationId]))
+        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]).isError)
     }
 
     // MARK: - Helpers
