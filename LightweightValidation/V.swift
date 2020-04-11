@@ -9,11 +9,11 @@
 import Foundation
 
 /// Simple validation result.
-public enum V <T> {
+public enum V <T, E> {
     /// A valid value.
     case value(T)
-    /// An error.
-    case error
+    /// One or more errors.
+    case error([E])
 }
 
 extension V {
@@ -29,15 +29,16 @@ extension V {
     }
 }
 
-public func && (lhs: V<()>, rhs: V<()>) -> V<()> {
+public func && <E> (lhs: V<(), E>, rhs: V<(), E>) -> V<(), E> {
     switch (lhs, rhs) {
-    case (.value, .value): return lhs
-    default: return .error
+    case (_, .value): return lhs
+    case (.value, .error): return rhs
+    case let (.error(e1), .error(e2)): return .error(e1 + e2)
     }
 }
 
 extension Bool {
-    var V: V<()> {
-        self ? .value(()) : .error
+    var V: V<(), StringError> {
+        self ? .value(()) : .error([StringError("Failed validation")])
     }
 }

@@ -25,7 +25,7 @@ public struct Response {
 }
 
 extension Response {
-    public typealias SimpleValidationResult = V<()>
+    public typealias SimpleValidationResult = V<(), StringError>
 
     public func validate(sentIds: Set<Int>) -> SimpleValidationResult {
         validateCorrelationId(sentIds)
