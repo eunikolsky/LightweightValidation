@@ -21,7 +21,7 @@ class ResponseValidatorTests: XCTestCase {
 
     func testCorrelationIdNotInSentIdsShouldBeInvalid() {
         let sut = response(withCorrelationId: 99)
-        XCTAssertTrue(sut.validate(sentIds: [1, 10]).isError)
+        XCTAssertEqual(sut.validate(sentIds: [1, 10]).error, ["Correlation id 99 is not in the sent ids set [1, 10]"])
     }
 
     func testLongUserNameShouldBeValid() {
@@ -31,12 +31,20 @@ class ResponseValidatorTests: XCTestCase {
 
     func testShortUserNameShouldBeInvalid() {
         let sut = response(withUserName: "ab")
-        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]).isError)
+        XCTAssertEqual(sut.validate(sentIds: [T.anonymousCorrelationId]).error, ["Username ab must be 3+ chars"])
     }
 
     func testUserNameWithAtSymbolShouldBeInvalid() {
         let sut = response(withUserName: "ab@foo")
-        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]).isError)
+        XCTAssertEqual(sut.validate(sentIds: [T.anonymousCorrelationId]).error, ["Username ab@foo must not contain '@'"])
+    }
+
+    func testValidationErrorsShouldAccumulate() {
+        let sut = response(withCorrelationId: 99, withUserName: "a@")
+        XCTAssertEqual(sut.validate(sentIds: [T.anonymousCorrelationId]).error.map(Set.init),
+                       Set(["Correlation id 99 is not in the sent ids set [200]",
+                            "Username a@ must not contain '@'",
+                            "Username a@ must be 3+ chars"]))
     }
 
     // MARK: - Helpers

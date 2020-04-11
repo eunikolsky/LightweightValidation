@@ -24,8 +24,11 @@ extension V {
         }
     }
 
-    public var isError: Bool {
-        !self.isValue
+    public var error: [E]? {
+        switch self {
+        case .error(let e): return e
+        default: return nil
+        }
     }
 }
 

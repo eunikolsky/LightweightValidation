@@ -16,3 +16,14 @@ public struct StringError {
         self.message = message
     }
 }
+
+extension StringError: Equatable {}
+extension StringError: Hashable {}
+
+extension StringError: ExpressibleByStringLiteral {
+    public init(stringLiteral value: String) {
+        self.message = value
+    }
+}
+
+extension StringError: ExpressibleByStringInterpolation {}
