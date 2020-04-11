@@ -37,8 +37,18 @@ public func && <E> (lhs: V<(), E>, rhs: V<(), E>) -> V<(), E> {
     }
 }
 
-extension Bool {
-    var V: V<(), StringError> {
-        self ? .value(()) : .error([StringError("Failed validation")])
-    }
+precedencegroup VGroup {
+    associativity: left
+    lowerThan: ComparisonPrecedence
+    higherThan: LogicalConjunctionPrecedence
+}
+
+infix operator <?>: VGroup
+
+/// Converts the `condition` to a `V` value. `true` means a valid value and `false`
+/// is replaced with the `rhs` error.
+public func <?> <E> (condition: Bool, rhs: @autoclosure () -> E) -> V<(), E> {
+    condition
+        ? .value(())
+        : .error([rhs()])
 }

@@ -34,12 +34,12 @@ extension Response {
 
     /// The correlation id must be in the list of correlation ids of sent requests.
     private func validateCorrelationId(_ sentIds: Set<Int>) -> SimpleValidationResult {
-        sentIds.contains(correlationId).V
+        sentIds.contains(correlationId) <?> StringError("Correlation id \(correlationId) is not in the sent ids set \(sentIds)")
     }
 
     /// Usernames are minimum 3 chars long and cannot include `@`.
     private func validateUserName() -> SimpleValidationResult {
-        (userName.count >= 3).V
-            && (!userName.contains("@")).V
+        userName.count >= 3 <?> StringError("Username \(userName) must be 3+ chars")
+            && !userName.contains("@") <?> StringError("Username \(userName) must not contain '@'")
     }
 }
