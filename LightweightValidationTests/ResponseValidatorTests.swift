@@ -6,29 +6,43 @@
 //  Copyright © 2020 yes. All rights reserved.
 //
 
-import XCTest
 import LightweightValidation
+import XCTest
 
 class ResponseValidatorTests: XCTestCase {
+    private typealias T = ResponseValidatorTests
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    static let anonymousCorrelationId = 200
+
+    func testCorrelationIdInSentIdsShouldBeValid() {
+        let sut = response(withCorrelationId: 100)
+        XCTAssertTrue(sut.validate(sentIds: [1, 100, 9000]))
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testCorrelationIdNotInSentIdsShouldBeInvalid() {
+        let sut = response(withCorrelationId: 99)
+        XCTAssertFalse(sut.validate(sentIds: [1, 10]))
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testLongUserNameShouldBeValid() {
+        let sut = response(withUserName: "123")
+        XCTAssertTrue(sut.validate(sentIds: [T.anonymousCorrelationId]))
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testShortUserNameShouldBeInvalid() {
+        let sut = response(withUserName: "ab")
+        XCTAssertFalse(sut.validate(sentIds: [T.anonymousCorrelationId]))
     }
 
+    func testUserNameWithAtSymbolShouldBeInvalid() {
+        let sut = response(withUserName: "ab@foo")
+        XCTAssertFalse(sut.validate(sentIds: [T.anonymousCorrelationId]))
+    }
+
+    // MARK: - Helpers
+
+    func response(withCorrelationId: Int = T.anonymousCorrelationId,
+                  withUserName: String = "foo") -> Response {
+        Response(correlationId: withCorrelationId, userName: withUserName, extraData: Data())
+    }
 }
