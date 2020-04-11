@@ -1,5 +1,5 @@
 //
-//  LightweightValidationTests.swift
+//  ResponseValidatorTests.swift
 //  LightweightValidationTests
 //
 //  Created by user on 11.04.20.
@@ -9,7 +9,7 @@
 import XCTest
 import LightweightValidation
 
-class LightweightValidationTests: XCTestCase {
+class ResponseValidatorTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

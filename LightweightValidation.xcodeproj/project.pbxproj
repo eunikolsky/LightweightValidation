@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14BE424E2441BD8800636D18 /* ResponseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE424D2441BD8800636D18 /* ResponseValidator.swift */; };
-		7500D2F18796472EB6193460 /* LightweightValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD6FD50157DE481178EEC5 /* LightweightValidationTests.swift */; };
+		7500D2F18796472EB6193460 /* ResponseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */; };
 		75574FBB78CBA82FC5E0BB82 /* LightweightValidation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AEB8C53725A66A98CCA17F /* LightweightValidation.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		75736CAE96A19A4E9D97AD0F /* LightweightValidationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LightweightValidationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75ACF14D556F65F52C437423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		75AEB8C53725A66A98CCA17F /* LightweightValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LightweightValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		75DD6FD50157DE481178EEC5 /* LightweightValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightweightValidationTests.swift; sourceTree = "<group>"; };
+		75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7516E37763624BA4003C45E4 /* Info.plist */,
-				75DD6FD50157DE481178EEC5 /* LightweightValidationTests.swift */,
+				75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */,
 			);
 			path = LightweightValidationTests;
 			sourceTree = "<group>";
@@ -197,7 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7500D2F18796472EB6193460 /* LightweightValidationTests.swift in Sources */,
+				7500D2F18796472EB6193460 /* ResponseValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
