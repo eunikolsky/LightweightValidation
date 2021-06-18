@@ -32,5 +32,31 @@ class ConjunctionBuilderTests: XCTestCase {
         }
         XCTAssertEqual(sut.error, ["always fails"])
     }
+
+    func testDisabledConditionalStepShouldBeIgnored() {
+        let forceFail = false
+
+        let sut = Response.SimpleValidationResult.all {
+            true <?> StringError("never happens")
+
+            if forceFail {
+                false <?> StringError("always fails")
+            }
+        }
+        XCTAssertTrue(sut.isValue)
+    }
+
+    func testEnabledConditionalStepShouldNotBeIgnored() {
+        let forceFail = true
+
+        let sut = Response.SimpleValidationResult.all {
+            true <?> StringError("never happens")
+
+            if forceFail {
+                false <?> StringError("always fails")
+            }
+        }
+        XCTAssertEqual(sut.error, ["always fails"])
+    }
 }
 #endif

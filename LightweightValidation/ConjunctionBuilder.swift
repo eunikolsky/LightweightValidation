@@ -16,6 +16,10 @@ public struct ConjunctionBuilder {
             result && validation
         }
     }
+
+    public static func buildOptional <E> (_ validation: V<(), E>?) -> V<(), E> {
+        validation ?? .empty
+    }
 }
 
 public extension V {
