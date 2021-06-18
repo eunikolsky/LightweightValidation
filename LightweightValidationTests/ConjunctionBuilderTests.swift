@@ -58,5 +58,31 @@ class ConjunctionBuilderTests: XCTestCase {
         }
         XCTAssertEqual(sut.error, ["always fails"])
     }
+
+    func testConditionalThenStepShouldBeUsed() {
+        let fail = true
+
+        let sut = Response.SimpleValidationResult.all {
+            if fail {
+                false <?> StringError("always fails")
+            } else {
+                true <?> StringError("never happens")
+            }
+        }
+        XCTAssertEqual(sut.error, ["always fails"])
+    }
+
+    func testConditionalElseStepShouldBeUsed() {
+        let succeed = false
+
+        let sut = Response.SimpleValidationResult.all {
+            if succeed {
+                true <?> StringError("never happens")
+            } else {
+                false <?> StringError("always fails")
+            }
+        }
+        XCTAssertEqual(sut.error, ["always fails"])
+    }
 }
 #endif

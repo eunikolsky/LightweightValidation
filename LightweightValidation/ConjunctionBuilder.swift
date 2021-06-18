@@ -20,6 +20,14 @@ public struct ConjunctionBuilder {
     public static func buildOptional <E> (_ validation: V<(), E>?) -> V<(), E> {
         validation ?? .empty
     }
+
+    public static func buildEither <E> (first validation: V<(), E>) -> V<(), E> {
+        validation
+    }
+
+    public static func buildEither <E> (second validation: V<(), E>) -> V<(), E> {
+        validation
+    }
 }
 
 public extension V {
