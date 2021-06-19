@@ -17,5 +17,20 @@ class ConjunctionBuilderTests: XCTestCase {
         }
         XCTAssertTrue(sut.isValue)
     }
+
+    func testInvalidStepShouldReturnItself() {
+        let sut = Response.SimpleValidationResult.all {
+            false <?> StringError("always fails")
+        }
+        XCTAssertEqual(sut.error, ["always fails"])
+    }
+
+    func testTwoStepsShouldBeCombined() {
+        let sut = Response.SimpleValidationResult.all {
+            true <?> StringError("never happens")
+            false <?> StringError("always fails")
+        }
+        XCTAssertEqual(sut.error, ["always fails"])
+    }
 }
 #endif
