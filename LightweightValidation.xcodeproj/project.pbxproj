@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071DDA9F267DAACE00369489 /* ConjunctionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DDA9E267DAACE00369489 /* ConjunctionBuilder.swift */; };
+		071DDAA3267DAAFF00369489 /* ConjunctionBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071DDAA2267DAAFF00369489 /* ConjunctionBuilderTests.swift */; };
 		14BE424E2441BD8800636D18 /* ResponseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BE424D2441BD8800636D18 /* ResponseValidator.swift */; };
 		7500D2F18796472EB6193460 /* ResponseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */; };
 		751856E71195D54F38792660 /* V.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A5B579658152CC9DDDFF0A /* V.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071DDA9E267DAACE00369489 /* ConjunctionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConjunctionBuilder.swift; sourceTree = "<group>"; };
+		071DDAA2267DAAFF00369489 /* ConjunctionBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConjunctionBuilderTests.swift; sourceTree = "<group>"; };
 		14BE424D2441BD8800636D18 /* ResponseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidator.swift; sourceTree = "<group>"; };
 		7516E37763624BA4003C45E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		755F66236AF76130A0A3DDA4 /* StringError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringError.swift; sourceTree = "<group>"; };
@@ -68,6 +72,7 @@
 			children = (
 				75ACF14D556F65F52C437423 /* Info.plist */,
 				14BE424D2441BD8800636D18 /* ResponseValidator.swift */,
+				071DDA9E267DAACE00369489 /* ConjunctionBuilder.swift */,
 				75A5B579658152CC9DDDFF0A /* V.swift */,
 				755F66236AF76130A0A3DDA4 /* StringError.swift */,
 			);
@@ -88,6 +93,7 @@
 			children = (
 				7516E37763624BA4003C45E4 /* Info.plist */,
 				75DD6FD50157DE481178EEC5 /* ResponseValidatorTests.swift */,
+				071DDAA2267DAAFF00369489 /* ConjunctionBuilderTests.swift */,
 			);
 			path = LightweightValidationTests;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071DDA9F267DAACE00369489 /* ConjunctionBuilder.swift in Sources */,
 				14BE424E2441BD8800636D18 /* ResponseValidator.swift in Sources */,
 				751856E71195D54F38792660 /* V.swift in Sources */,
 				753FD777795B093E3ED5A224 /* StringError.swift in Sources */,
@@ -205,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				071DDAA3267DAAFF00369489 /* ConjunctionBuilderTests.swift in Sources */,
 				7500D2F18796472EB6193460 /* ResponseValidatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

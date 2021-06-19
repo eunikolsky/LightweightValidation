@@ -28,8 +28,15 @@ extension Response {
     public typealias SimpleValidationResult = V<(), StringError>
 
     public func validate(sentIds: Set<Int>) -> SimpleValidationResult {
-        validateCorrelationId(sentIds)
+        #if swift(>=5.4)
+        SimpleValidationResult.all {
+            validateCorrelationId(sentIds)
+            validateUserName()
+        }
+        #else
+        return validateCorrelationId(sentIds)
             && validateUserName()
+        #endif
     }
 
     /// The correlation id must be in the list of correlation ids of sent requests.
@@ -39,7 +46,16 @@ extension Response {
 
     /// Usernames are minimum 3 chars long and cannot include `@`.
     private func validateUserName() -> SimpleValidationResult {
-        userName.count >= 3 <?> "Username \(userName) must be 3+ chars"
+        #if swift(>=5.4)
+        // for some reason, the strings can't be automatically converted to `StringError` here
+        // `Cannot convert value of type 'V<(), String>' to closure result type 'V<(), StringError>'`
+        SimpleValidationResult.all {
+            userName.count >= 3 <?> StringError("Username \(userName) must be 3+ chars")
+            !userName.contains("@") <?> StringError("Username \(userName) must not contain '@'")
+        }
+        #else
+        return userName.count >= 3 <?> "Username \(userName) must be 3+ chars"
             && !userName.contains("@") <?> "Username \(userName) must not contain '@'"
+        #endif
     }
 }

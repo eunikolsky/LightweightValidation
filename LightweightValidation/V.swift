@@ -32,6 +32,13 @@ extension V {
     }
 }
 
+public extension V where T == () {
+    /// The smallest successful empty value.
+    static var empty: Self {
+        .value(())
+    }
+}
+
 public func && <E> (lhs: V<(), E>, rhs: V<(), E>) -> V<(), E> {
     switch (lhs, rhs) {
     case (_, .value): return lhs
@@ -52,6 +59,6 @@ infix operator <?>: VGroup
 /// is replaced with the `rhs` error.
 public func <?> <E> (condition: Bool, rhs: @autoclosure () -> E) -> V<(), E> {
     condition
-        ? .value(())
+        ? .empty
         : .error([rhs()])
 }
