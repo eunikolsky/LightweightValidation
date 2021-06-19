@@ -12,9 +12,7 @@ import Foundation
 @resultBuilder
 public struct ConjunctionBuilder {
     public static func buildBlock <E> (_ validations: V<(), E>...) -> V<(), E> {
-        // as I understand, `validations` cannot be empty here because if the user supplied no validations,
-        // `buildBlock()` would be called if it were implemented
-        validations.dropFirst().reduce(validations[0]) { result, validation in
+        validations.reduce(.empty) { result, validation in
             result && validation
         }
     }
